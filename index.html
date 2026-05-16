@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProDrive IQ | Car Services Saudi Arabia</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; color: #191c1e; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav class="glass-nav">
+    <div class="nav-inner">
+        <a href="index.html" style="font-size:1.5rem;font-weight:800;color:#00408b;text-decoration:none;font-family:'Manrope',sans-serif;">ProDrive IQ</a>
+        <div class="nav-links">
+            <a href="providers.html" class="nav-link">Services</a>
+            <a href="providers.html" class="nav-link">Workshops</a>
+            <a href="about.html"     class="nav-link">About</a>
+        </div>
+        <div class="nav-actions">
+            <a href="login.html"              id="navLoginBtn"     class="nav-link" style="padding:0.5rem 1rem;">Login</a>
+            <a href="login.html?mode=register" id="navRegisterBtn"  class="btn-primary">Register</a>
+            <a href="dashboard.html"           id="navDashboardBtn" style="display:none" class="btn-primary">Dashboard</a>
+        </div>
+    </div>
+</nav>
+
+<main style="padding-top:5rem;">
+
+    <!-- ── Hero ── -->
+    <section class="hero-section" style="min-height:780px;display:flex;align-items:center;justify-content:center;padding:6rem 1.5rem;background-image:url('images/hero-bg.jpg');">
+        <div class="hero-overlay"></div>
+
+        <div style="position:relative;z-index:10;max-width:56rem;width:100%;text-align:center;">
+
+            <span style="display:inline-block;padding:0.375rem 1rem;background:#d8e2ff;color:#00408b;font-size:0.75rem;font-weight:700;border-radius:9999px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;">
+                Saudi Arabia's #1 Car Service Platform
+            </span>
+
+            <h1 style="font-size:clamp(2.5rem,7vw,4.5rem);font-weight:800;letter-spacing:-0.02em;color:#191c1e;line-height:1.1;margin-bottom:1.5rem;">
+                Find the Best <span style="color:#00408b;">Car Services</span><br>in Saudi Arabia
+            </h1>
+
+            <p style="font-size:1.125rem;color:#424752;max-width:36rem;margin:0 auto 2.5rem;">
+                Find trusted workshops, compare prices, and book car services across Saudi Arabia.
+            </p>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <div style="flex:1;display:flex;align-items:center;gap:0.75rem;padding:0 1rem;border-right:1px solid #e5e7eb;">
+                    <span class="material-symbols-outlined" style="color:#9ca3af;">search</span>
+                    <input id="searchInput" type="text" placeholder="Service type (e.g. Oil Change)"
+                           style="width:100%;padding:0.75rem 0;background:transparent;border:none;outline:none;color:#191c1e;font-size:0.875rem;font-family:'Inter',sans-serif;">
+                </div>
+                <div style="flex:1;display:flex;align-items:center;gap:0.75rem;padding:0 1rem;">
+                    <span class="material-symbols-outlined" style="color:#9ca3af;">location_on</span>
+                    <select id="citySelect" style="width:100%;padding:0.75rem 0;background:transparent;border:none;outline:none;color:#191c1e;font-size:0.875rem;font-family:'Inter',sans-serif;cursor:pointer;appearance:none;">
+                        <option value="riyadh">Riyadh</option>
+                        <option value="jeddah">Jeddah</option>
+                        <option value="dammam">Dammam</option>
+                        <option value="khobar">Al Khobar</option>
+                    </select>
+                </div>
+                <button id="searchBtn" class="btn-primary" style="padding:0.75rem 2rem;display:flex;align-items:center;justify-content:center;gap:0.5rem;">
+                    <span class="material-symbols-outlined" style="font-size:1.125rem;">search</span> Find Service
+                </button>
+            </div>
+
+            <!-- Popular Chips -->
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem;">
+                <span style="font-size:0.75rem;color:#6b7280;align-self:center;">Popular:</span>
+                <button data-search="Oil Change"       class="popular-chip">Oil Change</button>
+                <button data-search="Brake Inspection" class="popular-chip">Brake Inspection</button>
+                <button data-search="A/C Service"      class="popular-chip">A/C Service</button>
+                <button data-search="Full Detailing"   class="popular-chip">Full Detailing</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── Top-Rated Workshops ── -->
+    <section class="page-container" style="padding-top:5rem;padding-bottom:5rem;">
+
+        <div class="flex-between" style="margin-bottom:3rem;">
+            <div>
+                <p class="section-label">Verified &amp; Rated</p>
+                <h2 style="font-size:2.25rem;font-weight:800;color:#191c1e;">Top-Rated Workshops</h2>
+            </div>
+            <a href="providers.html" style="color:#00408b;font-weight:700;font-size:0.875rem;display:flex;align-items:center;gap:0.25rem;text-decoration:none;">
+                View all <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <div class="grid-3">
+
+            <!-- Card 1 -->
+            <div class="card" style="overflow:hidden;display:flex;flex-direction:column;transition:box-shadow 0.3s;">
+                <div class="workshop-img-container">
+                    <div class="icon-fallback" style="background:#f3f4f6;">
+                        <span class="material-symbols-outlined" style="color:#d1d5db;font-size:3rem;">build</span>
+                    </div>
+                    <img src="images/workshop-1.jpg" alt="Workshop Elite Motors Workshop in Al Olaya, Riyadh" onerror="this.style.display='none'">
+                </div>
+                <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.25rem;">
+                        <h3 style="font-weight:700;font-size:1.125rem;color:#191c1e;">Elite Motors Workshop</h3>
+                        <span class="badge" style="margin-left:0.5rem;flex-shrink:0;">
+                            <span class="material-symbols-outlined" style="font-size:13px;font-variation-settings:'FILL' 1;">star</span>4.9
+                        </span>
+                    </div>
+                    <p style="color:#6b7280;font-size:0.875rem;">Al Olaya, Riyadh</p>
+                    <p style="color:#9ca3af;font-size:0.75rem;margin-top:0.125rem;margin-bottom:1rem;">German &amp; European</p>
+                    <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;">
+                        <div>
+                            <p style="font-size:0.75rem;color:#9ca3af;text-transform:uppercase;letter-spacing:0.05em;">From</p>
+                            <p style="font-size:1.125rem;font-weight:800;color:#191c1e;">250 SAR</p>
+                        </div>
+                        <button onclick="goToBooking(1)" class="btn-primary">Book</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card" style="overflow:hidden;display:flex;flex-direction:column;transition:box-shadow 0.3s;">
+                <div class="workshop-img-container">
+                    <div class="icon-fallback" style="background:#f3f4f6;">
+                        <span class="material-symbols-outlined" style="color:#d1d5db;font-size:3rem;">precision_manufacturing</span>
+                    </div>
+                    <img src="images/workshop-3.jpg" alt="Workshop Al Khobar Specialist in Rakah, Al Khobar" onerror="this.style.display='none'">
+                </div>
+                <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.25rem;">
+                        <h3 style="font-weight:700;font-size:1.125rem;color:#191c1e;">Al Khobar Specialist</h3>
+                        <span class="badge" style="margin-left:0.5rem;flex-shrink:0;">
+                            <span class="material-symbols-outlined" style="font-size:13px;font-variation-settings:'FILL' 1;">star</span>4.8
+                        </span>
+                    </div>
+                    <p style="color:#6b7280;font-size:0.875rem;">Rakah, Al Khobar</p>
+                    <p style="color:#9ca3af;font-size:0.75rem;margin-top:0.125rem;margin-bottom:1rem;">Transmission &amp; Engine</p>
+                    <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;">
+                        <div>
+                            <p style="font-size:0.75rem;color:#9ca3af;text-transform:uppercase;letter-spacing:0.05em;">From</p>
+                            <p style="font-size:1.125rem;font-weight:800;color:#191c1e;">320 SAR</p>
+                        </div>
+                        <button onclick="goToBooking(3)" class="btn-primary">Book</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card" style="overflow:hidden;display:flex;flex-direction:column;transition:box-shadow 0.3s;">
+                <div class="workshop-img-container">
+                    <div class="icon-fallback" style="background:#f3f4f6;">
+                        <span class="material-symbols-outlined" style="color:#d1d5db;font-size:3rem;">directions_car</span>
+                    </div>
+                    <img src="images/workshop-5.jpg" alt="Workshop German Auto Experts in Al Malqa, Riyadh" onerror="this.style.display='none'">
+                </div>
+                <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.25rem;">
+                        <h3 style="font-weight:700;font-size:1.125rem;color:#191c1e;">German Auto Experts</h3>
+                        <span class="badge" style="margin-left:0.5rem;flex-shrink:0;">
+                            <span class="material-symbols-outlined" style="font-size:13px;font-variation-settings:'FILL' 1;">star</span>4.9
+                        </span>
+                    </div>
+                    <p style="color:#6b7280;font-size:0.875rem;">Al Malqa, Riyadh</p>
+                    <p style="color:#9ca3af;font-size:0.75rem;margin-top:0.125rem;margin-bottom:1rem;">BMW &amp; Mercedes Only</p>
+                    <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;">
+                        <div>
+                            <p style="font-size:0.75rem;color:#9ca3af;text-transform:uppercase;letter-spacing:0.05em;">From</p>
+                            <p style="font-size:1.125rem;font-weight:800;color:#191c1e;">450 SAR</p>
+                        </div>
+                        <button onclick="goToBooking(5)" class="btn-primary">Book</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card" style="overflow:hidden;display:flex;flex-direction:column;transition:box-shadow 0.3s;">
+                <div class="workshop-img-container">
+                    <div class="icon-fallback" style="background:#f3f4f6;">
+                        <span class="material-symbols-outlined" style="color:#d1d5db;font-size:3rem;">local_car_wash</span>
+                    </div>
+                    <img src="images/workshop-9.jpg" alt="Workshop Safa Motors in Al Safa, Jeddah" onerror="this.style.display='none'">
+                </div>
+                <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.25rem;">
+                        <h3 style="font-weight:700;font-size:1.125rem;color:#191c1e;">Safa Motors</h3>
+                        <span class="badge" style="margin-left:0.5rem;flex-shrink:0;">
+                            <span class="material-symbols-outlined" style="font-size:13px;font-variation-settings:'FILL' 1;">star</span>4.9
+                        </span>
+                    </div>
+                    <p style="color:#6b7280;font-size:0.875rem;">Al Safa, Jeddah</p>
+                    <p style="color:#9ca3af;font-size:0.75rem;margin-top:0.125rem;margin-bottom:1rem;">Luxury Detailing</p>
+                    <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;">
+                        <div>
+                            <p style="font-size:0.75rem;color:#9ca3af;text-transform:uppercase;letter-spacing:0.05em;">From</p>
+                            <p style="font-size:1.125rem;font-weight:800;color:#191c1e;">500 SAR</p>
+                        </div>
+                        <button onclick="goToBooking(9)" class="btn-primary">Book</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card" style="overflow:hidden;display:flex;flex-direction:column;transition:box-shadow 0.3s;">
+                <div class="workshop-img-container">
+                    <div class="icon-fallback" style="background:#f3f4f6;">
+                        <span class="material-symbols-outlined" style="color:#d1d5db;font-size:3rem;">speed</span>
+                    </div>
+                    <img src="images/workshop-4.jpg" alt="Workshop Dammam Performance Center in Industrial Area, Dammam" onerror="this.style.display='none'">
+                </div>
+                <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.25rem;">
+                        <h3 style="font-weight:700;font-size:1.125rem;color:#191c1e;">Dammam Performance</h3>
+                        <span class="badge" style="margin-left:0.5rem;flex-shrink:0;">
+                            <span class="material-symbols-outlined" style="font-size:13px;font-variation-settings:'FILL' 1;">star</span>4.6
+                        </span>
+                    </div>
+                    <p style="color:#6b7280;font-size:0.875rem;">Industrial Area, Dammam</p>
+                    <p style="color:#9ca3af;font-size:0.75rem;margin-top:0.125rem;margin-bottom:1rem;">Sport &amp; Performance</p>
+                    <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;">
+                        <div>
+                            <p style="font-size:0.75rem;color:#9ca3af;text-transform:uppercase;letter-spacing:0.05em;">From</p>
+                            <p style="font-size:1.125rem;font-weight:800;color:#191c1e;">150 SAR</p>
+                        </div>
+                        <button onclick="goToBooking(4)" class="btn-primary">Book</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="card" style="overflow:hidden;display:flex;flex-direction:column;transition:box-shadow 0.3s;">
+                <div class="workshop-img-container">
+                    <div class="icon-fallback" style="background:#f3f4f6;">
+                        <span class="material-symbols-outlined" style="color:#d1d5db;font-size:3rem;">workspace_premium</span>
+                    </div>
+                    <img src="images/workshop-10.jpg" alt="Workshop Crown Auto Service in Corniche, Al Khobar" onerror="this.style.display='none'">
+                </div>
+                <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.25rem;">
+                        <h3 style="font-weight:700;font-size:1.125rem;color:#191c1e;">Crown Auto Service</h3>
+                        <span class="badge" style="margin-left:0.5rem;flex-shrink:0;">
+                            <span class="material-symbols-outlined" style="font-size:13px;font-variation-settings:'FILL' 1;">star</span>4.7
+                        </span>
+                    </div>
+                    <p style="color:#6b7280;font-size:0.875rem;">Corniche, Al Khobar</p>
+                    <p style="color:#9ca3af;font-size:0.75rem;margin-top:0.125rem;margin-bottom:1rem;">Full-Service Workshop</p>
+                    <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;">
+                        <div>
+                            <p style="font-size:0.75rem;color:#9ca3af;text-transform:uppercase;letter-spacing:0.05em;">From</p>
+                            <p style="font-size:1.125rem;font-weight:800;color:#191c1e;">280 SAR</p>
+                        </div>
+                        <button onclick="goToBooking(10)" class="btn-primary">Book</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- ── Footer ── -->
+<footer style="background:#f1f5f9;border-top:1px solid #e2e8f0;padding:2.5rem 1.5rem;">
+    <div class="footer-grid">
+        <div>
+            <p style="font-weight:700;color:#191c1e;margin-bottom:0.5rem;">ProDrive IQ</p>
+            <p style="color:#64748b;font-size:0.875rem;">Saudi Arabia's trusted car service booking platform.</p>
+        </div>
+        <div>
+            <p class="section-label">Platform</p>
+            <a href="providers.html" class="footer-link">Services</a>
+            <a href="providers.html" class="footer-link">Workshops</a>
+        </div>
+        <div>
+            <p class="section-label">Company</p>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="#"          class="footer-link">Privacy Policy</a>
+        </div>
+        <div>
+            <p class="section-label">Contact</p>
+            <p style="color:#64748b;font-size:0.875rem;margin-bottom:0.25rem;">support@prodrive.sa</p>
+            <p style="color:#64748b;font-size:0.875rem;">Al Khobar, Saudi Arabia</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Exclude Milestone 1 reference files (old versions with spaces in names)
+code home page.html
+code login.html
+code service provider.html
+code booking page.html
+code user .html
+
+# OS files
+.DS_Store
+Thumbs.db

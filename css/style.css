@@ -1,0 +1,572 @@
+/* ══════════════════════════════════════════════════════════════
+   ProDrive IQ — style.css
+   Custom styles — all layout and components in one file
+   ══════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+
+/* ── Semantic Helper Classes ─────────────────────────────────
+   Reusable component classes used across all pages           */
+
+.btn-primary {
+    display: inline-block;
+    background-color: #00408b;
+    color: #ffffff;
+    padding: 0.6rem 1.4rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.15s;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+}
+.btn-primary:hover  { background-color: #0057b8; }
+.btn-primary:active { transform: scale(0.97); }
+
+.card {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0px 20px 40px rgba(25, 28, 30, 0.06);
+}
+
+.page-input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    background-color: #e6e8ea;
+    border: none;
+    border-radius: 0.75rem;
+    outline: none;
+    font-size: 0.875rem;
+    color: #191c1e;
+    font-family: 'Inter', sans-serif;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+.page-input:focus {
+    background-color: #ffffff;
+    outline: 2px solid #00408b;
+    outline-offset: 0;
+    box-shadow: none;
+}
+
+.nav-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #424752;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.nav-link:hover { color: #00408b; }
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: rgba(213, 227, 252, 0.7);
+    color: #424752;
+}
+
+
+/* ── Page Fade-In ─────────────────────────────────────────── */
+body { animation: fadeIn 0.25s ease-in; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ── Glassmorphism Nav ────────────────────────────────────── */
+.glass-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    background-color: rgba(247, 249, 251, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+
+/* ── Hero Section ─────────────────────────────────────────── */
+.hero-section {
+    background-color: #f7f9fb;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        160deg,
+        rgba(247, 249, 251, 0.95) 0%,
+        rgba(247, 249, 251, 0.82) 55%,
+        rgba(247, 249, 251, 0.65) 100%
+    );
+}
+
+
+/* ── Workshop Card Image ──────────────────────────────────── */
+.workshop-img-container {
+    position: relative;
+    height: 12rem;
+    overflow: hidden;
+    background-color: #e6e8ea;
+}
+
+.workshop-img-container img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    z-index: 1;
+}
+
+.workshop-img-container:hover img { transform: scale(1.05); }
+
+.workshop-img-container .icon-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+}
+
+
+/* ── Input Validation States ──────────────────────────────── */
+.input-error {
+    outline: 2px solid #ba1a1a !important;
+    outline-offset: 0 !important;
+    background-color: #fff5f5 !important;
+}
+
+.input-valid {
+    outline: 2px solid #2e7d32 !important;
+    outline-offset: 0 !important;
+}
+
+.error-msg {
+    display: block;
+    color: #ba1a1a;
+    font-size: 0.72rem;
+    margin-top: 0.3rem;
+    min-height: 1rem;
+}
+
+
+/* ── Service Card (Booking Page) ──────────────────────────── */
+.service-card {
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s, background-color 0.2s, transform 0.15s;
+    user-select: none;
+}
+
+.service-card:hover    { transform: translateY(-2px); }
+.service-card.selected { border-color: #00408b !important; background-color: #d8e2ff !important; }
+
+
+/* ── Date & Time Chips (Booking Page) ────────────────────── */
+.date-chip, .time-chip {
+    cursor: pointer;
+    transition: background-color 0.18s, color 0.18s, transform 0.15s;
+    user-select: none;
+}
+
+.date-chip:hover, .time-chip:hover { transform: scale(1.04); }
+
+.date-chip.selected, .time-chip.selected {
+    background-color: #00408b !important;
+    color: #ffffff !important;
+}
+
+
+/* ── Register Fields Slide Animation (Login Page) ────────── */
+.register-fields {
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.register-fields.open {
+    max-height: 500px;
+    opacity: 1;
+    overflow: visible;
+}
+
+
+/* ── Toast Notification (Booking Page) ───────────────────── */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: linear-gradient(135deg, #00408b, #0057b8);
+    color: #ffffff;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0px 16px 40px rgba(0, 64, 139, 0.3);
+    transform: translateY(120px);
+    opacity: 0;
+    transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+    z-index: 9999;
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-width: 280px;
+    pointer-events: none;
+}
+
+.toast.show { transform: translateY(0); opacity: 1; }
+
+
+/* ── Sidebar Active Link (Dashboard) ─────────────────────── */
+.sidebar-active {
+    background-color: #d8e2ff !important;
+    color: #001a41 !important;
+    font-weight: 600;
+}
+
+
+/* ── Step Number Circle (About Page) ─────────────────────── */
+.step-number {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00408b, #0057b8);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+
+/* ── Stat Card Top Accent (About & Dashboard) ─────────────── */
+.stat-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #00408b, #0057b8);
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   Layout Classes
+   Replace Tailwind utility chains with readable class names
+   ══════════════════════════════════════════════════════════════ */
+
+/* Nav inner wrapper */
+.nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Nav center links — hidden on mobile, flex on desktop */
+.nav-links {
+    display: none;
+    align-items: center;
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .nav-links { display: flex; }
+}
+
+/* Nav right-side buttons */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Centered max-width content wrapper */
+.page-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Footer 4-column grid */
+.footer-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .footer-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Footer nav links */
+.footer-link {
+    display: block;
+    color: #64748b;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+}
+.footer-link:hover { color: #00408b; }
+
+/* Small uppercase section label */
+.section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #00408b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+/* Sidebar layout — column on mobile, row on md+ */
+.sidebar-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .sidebar-layout { flex-direction: row; }
+}
+
+/* Sidebar panel */
+.sidebar {
+    width: 100%;
+    flex-shrink: 0;
+}
+@media (min-width: 768px) {
+    .sidebar { width: 16rem; }
+}
+
+/* Booking layout — column on mobile, row on lg+ */
+.booking-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+@media (min-width: 1024px) {
+    .booking-layout { flex-direction: row; }
+}
+
+/* Booking summary sidebar */
+.summary-col {
+    width: 100%;
+    flex-shrink: 0;
+}
+@media (min-width: 1024px) {
+    .summary-col { width: 20rem; }
+}
+
+/* Sticky sidebar (desktop only) */
+.sticky-sidebar {
+    top: 7rem;
+}
+@media (min-width: 768px) {
+    .sticky-sidebar { position: sticky; }
+}
+
+/* 2-column responsive grid */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+@media (min-width: 768px) { .grid-2 { grid-template-columns: repeat(2, 1fr); } }
+
+/* 3-column responsive grid */
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+@media (min-width: 640px)  { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+/* 4-column responsive grid */
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+@media (min-width: 768px) { .grid-4 { grid-template-columns: repeat(4, 1fr); } }
+
+/* Dashboard stats: 1 → 3 columns */
+.grid-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+@media (min-width: 640px) { .grid-stats { grid-template-columns: repeat(3, 1fr); } }
+
+/* Service cards: 1 → 2 columns */
+.grid-services {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+@media (min-width: 640px) { .grid-services { grid-template-columns: repeat(2, 1fr); } }
+
+/* Values grid: 1 → 2 → 4 columns */
+.grid-values {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+@media (min-width: 640px)  { .grid-values { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .grid-values { grid-template-columns: repeat(4, 1fr); } }
+
+/* Flex row, space between */
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Login page centering */
+.login-main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7rem 1.5rem 4rem;
+}
+
+/* Secondary outline button */
+.btn-outline {
+    width: 100%;
+    padding: 0.625rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #6b7280;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+.btn-outline:hover { background-color: #f9fafb; }
+
+/* Small icon container (colored square + icon) */
+.icon-box {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+    background-color: #d8e2ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #00408b;
+}
+
+/* User avatar circle */
+.avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: #d8e2ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Price breakdown box */
+.price-box {
+    background: #f9fafb;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+/* Hero search bar */
+.search-bar {
+    background: #ffffff;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+    max-width: 48rem;
+    margin: 0 auto 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+@media (min-width: 768px) {
+    .search-bar { flex-direction: row; gap: 0; }
+}
+
+/* Popular chip buttons (home hero) */
+.popular-chip {
+    padding: 0.375rem 1rem;
+    background: #ffffff;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #4b5563;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.popular-chip:hover { background-color: #d8e2ff; }
+
+/* Back button */
+.btn-back {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+.btn-back:hover { background-color: #e5e7eb; }
+
+
+/* ── Mobile Adjustments ───────────────────────────────────── */
+@media (max-width: 768px) {
+    .toast { left: 1rem; right: 1rem; bottom: 1rem; min-width: unset; }
+}

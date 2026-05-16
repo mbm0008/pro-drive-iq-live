@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | ProDrive IQ</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; color: #191c1e; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        @media (max-width: 767px) {
+            #dashLayout  { flex-direction: column !important; }
+            #dashSidebar { width: 100% !important; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav class="glass-nav">
+    <div class="nav-inner">
+        <a href="index.html" style="font-size:1.5rem;font-weight:800;color:#00408b;text-decoration:none;font-family:'Manrope',sans-serif;">ProDrive IQ</a>
+        <div class="nav-links">
+            <a href="providers.html" class="nav-link">Services</a>
+            <a href="providers.html" class="nav-link">Workshops</a>
+            <a href="about.html"     class="nav-link">About</a>
+        </div>
+        <div class="nav-actions">
+            <a href="login.html"              id="navLoginBtn"     class="nav-link" style="padding:0.5rem 1rem;">Login</a>
+            <a href="login.html?mode=register" id="navRegisterBtn"  class="btn-primary">Register</a>
+            <a href="dashboard.html"           id="navDashboardBtn" style="display:none" class="btn-primary">Dashboard</a>
+        </div>
+    </div>
+</nav>
+
+<main class="page-container" style="padding-top:7rem;padding-bottom:2.5rem;">
+
+    <!-- Welcome header -->
+    <div style="margin-bottom:2rem;">
+        <h1 style="font-size:1.875rem;font-weight:800;color:#191c1e;">Hello, <span id="userDisplayName">—</span></h1>
+        <p style="color:#6b7280;margin-top:0.25rem;">Manage your car services in one place.</p>
+    </div>
+
+    <div id="dashLayout" style="display:flex;flex-direction:row;gap:2rem;">
+
+        <!-- ── Sidebar ── -->
+        <aside id="dashSidebar" style="width:16rem;flex-shrink:0;">
+            <div class="card sticky-sidebar" style="padding:1.25rem;">
+
+                <!-- User avatar + info -->
+                <div style="display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid #f3f4f6;">
+                    <div class="avatar" style="margin-bottom:0.75rem;">
+                        <span class="material-symbols-outlined" style="font-size:28px;color:#00408b;">person</span>
+                    </div>
+                    <p id="profileName" style="font-weight:700;color:#191c1e;font-size:0.875rem;">—</p>
+                    <p id="userEmail"   style="color:#9ca3af;font-size:0.75rem;margin-top:0.125rem;">—</p>
+                </div>
+
+                <!-- Navigation links -->
+                <nav style="display:flex;flex-direction:column;gap:0.25rem;margin-bottom:1.25rem;">
+                    <a href="#" class="sidebar-link sidebar-active" style="display:flex;align-items:center;gap:0.75rem;padding:0.625rem 0.75rem;border-radius:0.75rem;font-size:0.875rem;font-weight:600;text-decoration:none;" data-section="sectionOverview">
+                        <span class="material-symbols-outlined" style="font-size:1.125rem;">dashboard</span> Overview
+                    </a>
+                    <a href="#" class="sidebar-link" style="display:flex;align-items:center;gap:0.75rem;padding:0.625rem 0.75rem;border-radius:0.75rem;font-size:0.875rem;font-weight:600;color:#424752;text-decoration:none;" data-section="sectionHistory">
+                        <span class="material-symbols-outlined" style="font-size:1.125rem;">history</span> History
+                    </a>
+                    <a href="#" class="sidebar-link" style="display:flex;align-items:center;gap:0.75rem;padding:0.625rem 0.75rem;border-radius:0.75rem;font-size:0.875rem;font-weight:600;color:#424752;text-decoration:none;" data-section="sectionProfile">
+                        <span class="material-symbols-outlined" style="font-size:1.125rem;">manage_accounts</span> Profile
+                    </a>
+                </nav>
+
+                <button id="logoutBtn" class="btn-outline">
+                    <span class="material-symbols-outlined" style="font-size:1.125rem;">logout</span> Log Out
+                </button>
+
+            </div>
+        </aside>
+
+        <!-- ── Main Content ── -->
+        <div style="flex:1;min-width:0;">
+
+            <!-- Overview Section -->
+            <div id="sectionOverview" class="dashboard-section">
+
+                <!-- Stats -->
+                <div class="grid-stats" style="margin-bottom:1.5rem;">
+                    <div class="stat-card card" style="padding:1.25rem;">
+                        <p style="font-size:0.75rem;color:#9ca3af;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.25rem;">Total Spent</p>
+                        <p id="totalServiceValue" style="font-size:1.5rem;font-weight:800;color:#00408b;">SAR 0</p>
+                    </div>
+                    <div class="stat-card card" style="padding:1.25rem;">
+                        <p style="font-size:0.75rem;color:#9ca3af;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.25rem;">Bookings</p>
+                        <p id="totalBookingsCount" style="font-size:1.5rem;font-weight:800;color:#00408b;">0</p>
+                    </div>
+                    <div class="stat-card card" style="padding:1.25rem;">
+                        <p style="font-size:0.75rem;color:#9ca3af;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.25rem;">Status</p>
+                        <p style="font-size:1.5rem;font-weight:800;color:#16a34a;">Active</p>
+                    </div>
+                </div>
+
+                <!-- Upcoming bookings -->
+                <div class="card" style="padding:1.5rem;margin-bottom:1.5rem;">
+                    <div class="flex-between" style="margin-bottom:1rem;">
+                        <h2 style="font-size:1.125rem;font-weight:700;">Upcoming Bookings</h2>
+                        <a href="providers.html" style="color:#00408b;font-size:0.875rem;font-weight:600;text-decoration:none;">+ Book new</a>
+                    </div>
+                    <div id="upcomingList"></div>
+                </div>
+
+                <!-- Past services -->
+                <div class="card" style="padding:1.5rem;">
+                    <h2 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem;">Past Services</h2>
+                    <div id="pastList"></div>
+                </div>
+
+            </div>
+
+            <!-- History Section -->
+            <div id="sectionHistory" class="dashboard-section" style="display:none;">
+                <div class="card" style="padding:1.5rem;">
+                    <h2 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem;">Service History</h2>
+                    <div id="historyList">
+                        <p style="color:#9ca3af;font-size:0.875rem;padding:1rem 0;">Your completed services will appear here.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div id="sectionProfile" class="dashboard-section" style="display:none;">
+                <div class="card" style="padding:1.5rem;max-width:32rem;">
+                    <h2 style="font-size:1.125rem;font-weight:700;margin-bottom:1.25rem;">Account Information</h2>
+                    <div style="display:flex;flex-direction:column;gap:1rem;">
+                        <div>
+                            <label style="display:block;font-size:0.875rem;font-weight:500;color:#424752;margin-bottom:0.375rem;">Full Name</label>
+                            <p id="profileNameDisplay" class="page-input" style="background:#f9fafb;cursor:default;">—</p>
+                        </div>
+                        <div>
+                            <label style="display:block;font-size:0.875rem;font-weight:500;color:#424752;margin-bottom:0.375rem;">Email</label>
+                            <p id="userEmailDisplay" class="page-input" style="background:#f9fafb;cursor:default;">—</p>
+                        </div>
+                        <div>
+                            <label style="display:block;font-size:0.875rem;font-weight:500;color:#424752;margin-bottom:0.375rem;">Member Since</label>
+                            <p class="page-input" style="background:#f9fafb;cursor:default;">2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- ── Footer ── -->
+<footer style="background:#f1f5f9;border-top:1px solid #e2e8f0;padding:2.5rem 1.5rem;margin-top:2rem;">
+    <div class="footer-grid">
+        <div>
+            <p style="font-weight:700;color:#191c1e;margin-bottom:0.5rem;">ProDrive IQ</p>
+            <p style="color:#64748b;font-size:0.875rem;">Saudi Arabia's trusted car service booking platform.</p>
+        </div>
+        <div>
+            <p class="section-label">Platform</p>
+            <a href="providers.html" class="footer-link">Services</a>
+            <a href="providers.html" class="footer-link">Workshops</a>
+        </div>
+        <div>
+            <p class="section-label">Company</p>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="#"          class="footer-link">Privacy Policy</a>
+        </div>
+        <div>
+            <p class="section-label">Contact</p>
+            <p style="color:#64748b;font-size:0.875rem;margin-bottom:0.25rem;">support@prodrive.sa</p>
+            <p style="color:#64748b;font-size:0.875rem;">Al Khobar, Saudi Arabia</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+        var countEl = document.getElementById('totalBookingsCount');
+        if (countEl) countEl.textContent = bookings.length;
+
+        var user = JSON.parse(localStorage.getItem('user') || 'null');
+        var profileNameDisplay = document.getElementById('profileNameDisplay');
+        var userEmailDisplay   = document.getElementById('userEmailDisplay');
+        if (user && profileNameDisplay) profileNameDisplay.textContent = user.name;
+        if (user && userEmailDisplay)   userEmailDisplay.textContent   = user.email;
+    });
+</script>
+</body>
+</html>
