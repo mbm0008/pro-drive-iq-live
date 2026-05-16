@@ -2,7 +2,7 @@
 
 A car service booking platform for Saudi Arabia. Built as a fully functional front-end web application for BIS351 — Web Business Applications (Milestone 2).
 
-🌐 **Live Site:** [mbm0008.github.io/prodrive-iq-live](https://mbm0008.github.io/prodrive-iq-live/)
+🌐 **Live Site:** [mbm0008.github.io/pro-drive-iq-live/](https://mbm0008.github.io/pro-drive-iq-live/)
 
 ---
 
